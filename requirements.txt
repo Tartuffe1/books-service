@@ -1,0 +1,9 @@
+Django==1.5.4
+MySQL-python==1.2.4
+wsgiref==0.1.2
+django-toolbelt==0.0.1
+psycopg2==2.5.3
+py-mysql2pgsql==0.1.5
+boto==2.19.0
+django_storages==1.1.8
+dj-database-url==0.2.1
