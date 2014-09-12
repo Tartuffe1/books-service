@@ -6,7 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'myheroku.views.home', name='home'),
+    url(r'^$', 'myheroku.views.home', name='home'),
     # url(r'^myheroku/', include('myheroku.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
