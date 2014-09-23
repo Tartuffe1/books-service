@@ -1,0 +1,18 @@
+<html>
+<body>
+<li><a href="/">Home</a></li>
+<li><a href="/whatever/add">Add</a></li>
+
+{% if whatever.count > 0 %}
+{% for w in whatever %}
+<div>
+<h2>{{ w.title }}</a></h2>
+<p>{{ w.body }}</p>
+</div>
+{% endfor %}
+{% else %}
+<p>Nothing.</p>
+{% endif %}
+</body>
+</html>
+
