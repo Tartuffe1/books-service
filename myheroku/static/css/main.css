@@ -304,3 +304,6 @@ body {
         page-break-after: avoid;
     }
 }
+body {
+    background-color: #DAF;
+}
