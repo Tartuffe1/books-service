@@ -1,6 +1,5 @@
 # Django settings for myheroku project.
 import os
-import storages
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
