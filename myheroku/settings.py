@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     'mytemplates',
     'books',
     'storages',
+    'boto',
     
 )
 
