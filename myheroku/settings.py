@@ -123,6 +123,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'mytemplates',
     'books',
+    'storages',
+    
 )
 
 # A sample logging configuration. The only tangible logging
@@ -162,3 +164,10 @@ try:
   from local_settings import *
 except Exception as e:
   pass
+  
+#Storage on S3 settings are stored as os.environs to keep settings.py clean
+if not DEBUG:
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    STATIC_URL = S3_URL
