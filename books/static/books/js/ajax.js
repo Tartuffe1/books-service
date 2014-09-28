@@ -1,4 +1,4 @@
-// JavaScript Document
+//My JavaScript Document
 $(function(){
        $('#search').keyup(function() {
            
