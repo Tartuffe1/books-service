@@ -15,9 +15,10 @@
               <span><a href={% url "books:detail" book.id %}>Details </a> </span>
               <div class="clear"></div>
         {% endfor %}
-        <img src="/media/jane.jpeg" class="image" />   
+           
    {% else %}
        <p> None for show! </p>
+       <img src="/media/jane.jpeg" class="image" />
    {% endif %}
 
 {% endblock %}
