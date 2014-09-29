@@ -14,7 +14,7 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     category = models.CharField(max_length=15, choices = CATEGORY_CHOICES)
     price= models.IntegerField()
-    docfile = models.FileField(upload_to='images/%Y/%m/%d', default='images/default.jpg')
+    docfile = models.FileField(upload_to='images', default='images/default.jpg')
     
     def __unicode__(self):
         return self.title
