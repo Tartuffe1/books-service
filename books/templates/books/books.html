@@ -5,7 +5,7 @@
    {% if latest_book_list.count > 0 %}
        
         {% for book in latest_book_list %}
-              <img src="/media/{{ book.docfile }}" class="image" />
+              <img src="{{STATIC_URL}}media/{{ book.docfile }}" class="image" />
               <span>Title: {{ book.title }}</span>
               <br>
               <span>Author: {{ book.author }}</span> 
@@ -18,7 +18,7 @@
            
    {% else %}
        <p> None for show! </p>
-       <img src="/media/jane.jpeg" class="image" />
+       <img src="{{STATIC_URL}}media/jane.jpeg" class="image" />
    {% endif %}
 
 {% endblock %}
