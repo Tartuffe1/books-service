@@ -175,8 +175,8 @@ if not DEBUG:
     
     #The STATICFILES_STORAGE setting controls how the files are aggregated together.
     #The default value is django.contrib.staticfiles.storage.StaticFilesStorage which will copy the collected files to the directory specified by STATIC_ROOT.
-    DEFAULT_FILE_STORAGE = 'myproject.s3utils.MediaRootS3BotoStorage'
-    STATICFILES_STORAGE = 'myproject.s3utils.StaticRootS3BotoStorage'
+    DEFAULT_FILE_STORAGE = 'myheroku.s3utils.MediaRootS3BotoStorage'
+    STATICFILES_STORAGE = 'myheroku.s3utils.StaticRootS3BotoStorage'
     S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
     STATIC_URL = S3_URL + STATIC_URL
     MEDIA_URL=S3_URL + MEDIA_URL
