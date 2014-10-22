@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     url(r'^whatever$', 'whatever.views.whatever'),
     url(r'^whatever/add/$', 'whatever.views.add'),
     (r'^books/', include('books.urls', namespace="books")),
+    (r'^accounts/', include('userena.urls')),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

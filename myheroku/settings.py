@@ -1,4 +1,23 @@
-# Django settings for myheroku project.
+AUTHENTICATION_BACKENDS = (  
+        'userena.backends.UserenaAuthenticationBackend',  
+        'guardian.backends.ObjectPermissionBackend',  
+        'django.contrib.auth.backends.ModelBackend',  
+    )  
+  
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'  
+  
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'  
+LOGIN_URL = '/accounts/signin/'  
+LOGOUT_URL = '/accounts/signout/'
+
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_PORT = 587  
+EMAIL_HOST_USER = 'dennis.zellich@gmail.com'  
+EMAIL_HOST_PASSWORD = '849Frane7687'  
+
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -125,6 +144,10 @@ INSTALLED_APPS = (
     'books',
     'storages',
     'boto',
+    'userena', 
+    'guardian', 
+    'easy_thumbnails',
+    'accounts',
     
 )
 
