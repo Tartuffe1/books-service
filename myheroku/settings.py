@@ -8,15 +8,9 @@ ANONYMOUS_USER_ID = -1
 
 AUTH_PROFILE_MODULE = 'accounts.MyProfile'  
   
-LOGIN_REDIRECT_URL = '/accounts/%(username)s/'  
-LOGIN_URL = '/accounts/signin/'  
-LOGOUT_URL = '/accounts/signout/'
-
-EMAIL_USE_TLS = True  
-EMAIL_HOST = 'smtp.gmail.com'  
-EMAIL_PORT = 587  
-EMAIL_HOST_USER = 'dennis.zellich@gmail.com'  
-EMAIL_HOST_PASSWORD = '849Frane7687'  
+MANDRILL_API_KEY = "kAGCAtj6FISZdCpBPyhXAg"
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+DEFAULT_FROM_EMAIL = 'dennis.zellich@gmail.com'
 
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -50,7 +44,7 @@ TIME_ZONE = 'America/Chicago'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-SITE_ID = 1
+SITE_ID = 2
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -148,7 +142,7 @@ INSTALLED_APPS = (
     'guardian', 
     'easy_thumbnails',
     'accounts',
-    
+    'djrill',
 )
 
 # A sample logging configuration. The only tangible logging
