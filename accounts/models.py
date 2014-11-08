@@ -5,7 +5,15 @@ from userena.models import UserenaBaseProfile
 
 from django.core.mail import send_mail
   
-class MyProfile(UserenaBaseProfile):  
-    user = models.OneToOneField(User,unique=True,  
-                        verbose_name=_('user'),related_name='my_profile')  
-    favourite_snack = models.CharField(_('favourite snack'),max_length=5)  
+class MyCustomProfile(UserenaBaseProfile):
+     """The Userena User profile"""
+     user = models.OneToOneField(User,
+         unique=True,
+         verbose_name=_('user'),
+         related_name='my_profile')
+     bio = models.CharField(max_length=1000,default="",blank=True)
+     # Make this field not editable because it controls access to uid from legacy db
+     my_legacy_user_object = models.SmallIntegerField(null=True,editable=False,unique=True)
+
+     def __unicode__(self):
+         return self.bio
