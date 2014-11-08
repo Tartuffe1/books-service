@@ -19,11 +19,11 @@
 			    <ul class="dropdown-menu">
 			      <li><a href="{% url 'userena_profile_detail' user.username %}"><i class="icon-wrench"></i> Profile</a></li>
 			      <li class="divider"></li>
-			      <li><a href="/accounts/signout"><i class="icon-off"></i> Log Out</a></li>
+			      <li><a href="/accounts/signout/"><i class="icon-off"></i> Log Out</a></li>
 			    </ul>
 			</li>
 		{% else %}
-		    <li><a href="/accounts/signin">Log in</a></li>	
+		    <li><a href="/accounts/signin/">Log in</a></li>	
 		{% endif %}
 	</ul>
   </div>
