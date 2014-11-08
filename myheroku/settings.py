@@ -12,7 +12,7 @@ MANDRILL_API_KEY = "kAGCAtj6FISZdCpBPyhXAg"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
 DEFAULT_FROM_EMAIL = 'dennis.zellich@gmail.com'
 
-USERENA_SIGNIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
 LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 
