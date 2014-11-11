@@ -6,7 +6,7 @@ AUTHENTICATION_BACKENDS = (
   
 ANONYMOUS_USER_ID = -1
 
-AUTH_PROFILE_MODULE = 'accounts.MyCustomProfile'  
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'  
 USERENA_ACTIVATION_REQUIRED=False  
 MANDRILL_API_KEY = "kAGCAtj6FISZdCpBPyhXAg"
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
@@ -203,3 +203,5 @@ if not DEBUG:
     MEDIA_URL='media/'
     STATIC_URL = S3_URL + STATIC_URL
     MEDIA_URL=S3_URL + MEDIA_URL
+    
+    SITE_ID = 1
