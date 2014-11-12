@@ -29,8 +29,12 @@ def add_book(request):
          form.save()
          return HttpResponseRedirect('/books/all/')
    else:  
-      form=BookForm() 
-   
+      # samo logirani korisnici mogu dodati knjige
+      if request.user.is_authenticated():
+         form=BookForm() 
+      else:
+         return HttpResponseRedirect('/books/all/')
+         
    args={}
    args.update(csrf(request))
    args['form']= form
