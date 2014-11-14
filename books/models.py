@@ -2,19 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Book(models.Model):
-    CATEGORY_CHOICES = (
-        ('expert', 'Expert books'),
-        ('classic', 'Classic literature'),
-        ('antiquarian', 'Antiquarian books'),
-        ('other', 'Other books'),
-        ('foreign', 'Foreign books'),
-    )
-    
     title = models.CharField(max_length=200)
-    author = models.CharField(max_length=100)
-    category = models.CharField(max_length=15, choices = CATEGORY_CHOICES)
-    price= models.IntegerField()
+    description = models.CharField(max_length=1000)
     docfile = models.FileField(upload_to='images', default='images/default.jpg')
+    
+    # Povezujemo knjigu sa korisnikom (userom) koji ju je uploadao:
+    user = models.ForeignKey('accounts.MyProfile')
     
     def __unicode__(self):
         return self.title

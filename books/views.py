@@ -9,6 +9,8 @@ from django.http import HttpResponseRedirect
 # we'll use more complex filter conditions for search tool
 from django.db.models import Q
 
+from django.contrib.auth import get_user
+
 # all books from database 
 def books(request):
     latest_book_list = Book.objects.all()
@@ -26,7 +28,11 @@ def add_book(request):
    if request.method == 'POST':
       form=BookForm(request.POST, request.FILES)
       if form.is_valid():
-         form.save()
+         new_book = form.save(commit=False)
+         # prirodno sam pokušavao samo sa request.user, ali to čini se nije MyProfile objekt, stoga
+         # ovaj get_user
+         new_book.user = get_user(request)
+         new_book.save()
          return HttpResponseRedirect('/books/all/')
    else:  
       # samo logirani korisnici mogu dodati knjige
