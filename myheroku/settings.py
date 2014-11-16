@@ -1,21 +1,9 @@
 AUTHENTICATION_BACKENDS = (  
-        'userena.backends.UserenaAuthenticationBackend',  
-        'guardian.backends.ObjectPermissionBackend',  
         'django.contrib.auth.backends.ModelBackend',  
     )  
   
 ANONYMOUS_USER_ID = -1
 
-AUTH_PROFILE_MODULE = 'accounts.MyProfile'  
-USERENA_ACTIVATION_REQUIRED=False  
-MANDRILL_API_KEY = "kAGCAtj6FISZdCpBPyhXAg"
-EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
-DEFAULT_FROM_EMAIL = 'dennis.zellich@gmail.com'
-
-LOGIN_REDIRECT_URL = '/accountse/%(username)s/'
-LOGIN_URL = '/accounts/signin/'
-LOGOUT_URL = '/accounts/signout/'
-USERENA_SIGNIN_REDIRECT_URL = '/'
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -127,6 +115,13 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'accounts.processor_file_name.user',
+    'django.core.context_processors.static',
+    'django.core.context_processors.media',
+)
+
 SOUTH_MIGRATION_MODULES = {
     'easy_thumbnails': 'easy_thumbnails.south_migrations',
 }    
@@ -144,11 +139,8 @@ INSTALLED_APPS = (
     'books',
     'storages',
     'boto',
-    'userena', 
-    'guardian', 
     'easy_thumbnails',
     'accounts',
-    'djrill',
 )
 
 # A sample logging configuration. The only tangible logging

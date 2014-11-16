@@ -1,0 +1,27 @@
+{% extends 'accounts/base_userena.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<form action="/accounts/auth/" method="POST">
+  {% csrf_token %}
+  <fieldset>
+    <legend>{% trans "Logg in" %}</legend>
+    {{ form.non_field_errors }}
+    {{ field.errors }}
+    {% comment %} Displaying checkboxes differently {% endcomment %}
+    <p class="checkbox">
+    <label for="username">Korisnicko ime:</label><input type="text" name="username" id= "username" /><br />
+    </p>
+    <p class="checkbox">
+    <label for="password">Zaporka:</label><input type="password" name="password" id= "password" /><br /> 
+    </p>
+    
+  </fieldset>
+  <input class="btn" type="submit" value="{% trans "Login" %}" />
+  <p>Not yet a member? <a href="/accounts/register">Signup</a></p>
+</form>
+
+{% endblock %}

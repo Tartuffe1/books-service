@@ -1,6 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, get_object_or_404
 from books.models import Book
+from django.template import RequestContext
 
 from forms import BookForm
 from django.core.context_processors import csrf
@@ -29,13 +30,12 @@ def add_book(request):
       form=BookForm(request.POST, request.FILES)
       if form.is_valid():
          new_book = form.save(commit=False)
-         # prirodno sam pokušavao samo sa request.user, ali to čini se nije MyProfile objekt, stoga
+         # prirodno sam pokusavao samo sa request.user, ali to cini se nije MyProfile objekt, stoga
          # ovaj get_user
          new_book.user = get_user(request)
          new_book.save()
          return HttpResponseRedirect('/books/all/')
    else:  
-      # samo logirani korisnici mogu dodati knjige
       if request.user.is_authenticated():
          form=BookForm() 
       else:
