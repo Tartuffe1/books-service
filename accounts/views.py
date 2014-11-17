@@ -12,6 +12,8 @@ from django.template import RequestContext
 from accounts.forms import ChangeEmailForm
 from django.contrib.auth.forms import PasswordChangeForm
 
+from books.models import Book
+
 def login(request):
    c={}
    c.update(csrf(request))
@@ -76,3 +78,12 @@ def password_change(request):
     args['form']=PasswordChangeForm(request)
     args['context_instance']=RequestContext(request)
     return render(request,'accounts/password_form.html',args)
+    
+def my_books(request):
+    my_books_list = Book.objects.filter(user=request.user)
+    
+    args={}
+    args.update(csrf(request))
+    args['my_books_list']= my_books_list
+    args['context_instance']=RequestContext(request)
+    return render(request, 'accounts/my_books.html', args)

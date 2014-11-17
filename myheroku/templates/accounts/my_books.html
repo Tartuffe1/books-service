@@ -1,0 +1,35 @@
+{% extends 'accounts/base_userena.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block title %}{% blocktrans with profile.user.username as username %}{{ username }} | Profile{% endblocktrans %}{% endblock %}
+{% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
+
+{% block content %}
+  <div class="white-box">
+    {% block profile_navigation %}
+      {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
+      
+    {% endblock %}
+
+    <div id="details">
+      {% block profile_details %}
+        {% if my_books_list.count > 0 %}
+       
+            {% for book in my_books_list %}
+                  <img src="{{MEDIA_URL}}{{ book.docfile }}" />
+                  <span>Title: {{ book.title }}</span>
+                  <br>
+                  <span>Opis: {{ book.description }}</span> 
+                  <br>
+                  <span><a href={% url "books:detail" book.id %}>Details </a> </span>
+                  <div class="clear"></div>
+            {% endfor %}
+               
+       {% else %}
+           <p> None for show! </p>
+       {% endif %}
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}
