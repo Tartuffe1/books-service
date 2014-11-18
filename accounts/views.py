@@ -31,7 +31,7 @@ def auth_view(request):
      return HttpResponseRedirect('/accounts/invalid/')
      
 def loggedin(request):
-   return render(request,'home.html',context_instance=RequestContext(request))
+   return render(request,'home2.html',context_instance=RequestContext(request))
                              
 def invalid_login(request):
    return render(request,'accounts/activate_fail.html',context_instance=RequestContext(request))
