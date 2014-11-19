@@ -34,18 +34,18 @@ def add_book(request):
          # ovaj get_user
          new_book.user = get_user(request)
          new_book.save()
-         return HttpResponseRedirect('/books/all/')
+         return HttpResponseRedirect('/')
    else:  
       if request.user.is_authenticated():
          form=BookForm() 
       else:
-         return HttpResponseRedirect('/books/all/')
-         
+         return HttpResponseRedirect('/')
+   
    args={}
    args.update(csrf(request))
    args['form']= form
+   args['context_instance']=RequestContext(request)
    return render(request, 'books/add_book.html', args)
-   
 #searching books by category
 def category(request, book_category):
   args={}
