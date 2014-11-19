@@ -32,7 +32,7 @@ def add_book(request):
          new_book = form.save(commit=False)
          # prirodno sam pokusavao samo sa request.user, ali to cini se nije MyProfile objekt, stoga
          # ovaj get_user
-         new_book.user = get_user(request)
+         new_book.user = request.user
          new_book.save()
          return HttpResponseRedirect('/')
    else:  
