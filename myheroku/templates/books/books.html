@@ -1,0 +1,22 @@
+{% extends "books/base.html" %}
+
+{% block content %} 
+   
+   {% if latest_book_list.count > 0 %}
+       
+        {% for book in latest_book_list %}
+              <img src="{{MEDIA_URL}}{{ book.docfile }}" class="image" />
+              <span>Title: {{ book.title }}</span>
+              <br>
+              <span>Opis: {{ book.description }}</span> 
+              <br>
+              <span><a href={% url "books:detail" book.id %}>Details </a> </span>
+              <div class="clear"></div>
+        {% endfor %}
+           
+   {% else %}
+       <p> None for show! </p>
+       <img src="{{STATIC_URL}}media/jane.jpeg" class="image" />
+   {% endif %}
+
+{% endblock %}
