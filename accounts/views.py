@@ -38,7 +38,7 @@ def invalid_login(request):
    
 def logout(request):
    auth.logout(request)
-   return render(request,'accounts/signout.html', context_instance=RequestContext(request))
+   return render(request,'home2.html', context_instance=RequestContext(request))
    
 def register_user(request):
    if request.method == 'POST':

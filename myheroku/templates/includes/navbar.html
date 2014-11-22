@@ -1,16 +1,12 @@
 <div class="navbar">
   <div class="navbar-inner">
     <a class="brand" href="/">Liber.hr</a>
-    <ul class="nav">
-		<li class="{% if name == "contact" %}active{% endif %}"><a href="/books/add_book">Predaj oglas</a></li>
-		<li class="{% if name == "userform" %}active{% endif %}"><a href="/userform">O nama</a></li>
-    </ul>
 	<ul class="nav pull-right">
 		{% if user.is_authenticated %}
 			<li class="dropdown">
 			  <a href="#" class="dropdown-toggle user-dropdown" data-toggle="dropdown">
 				<img class="user-thumbnail img-circle" src="{{STATIC_URL}}favicon.ico " alt="" />
-				Hi, {% if user.first_name %}
+				Pozdrav, {% if user.first_name %}
 					{{ user.first_name }}
 					{% else %}
 					{{ user.username }}

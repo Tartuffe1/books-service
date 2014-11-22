@@ -900,6 +900,7 @@ label {
 }
 select,
 textarea,
+input[type="textarea"],
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -927,15 +928,21 @@ input[type="color"],
   border-radius: 4px;
   vertical-align: middle;
 }
+.add_book textarea, .add_book input[type="text"], .add_book input[type="file"] {
+  width:350px;
+}
+
 input,
 textarea,
 .uneditable-input {
   width: 206px;
 }
 textarea {
-  height: auto;
+  height: 200px;
+  width:350px;
 }
 textarea,
+input[type="textarea"],
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -986,6 +993,11 @@ input[type="color"]:focus,
   -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
 }
+
+input[type="textarea"] {
+  height:150px;
+}
+
 input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
@@ -1015,6 +1027,7 @@ input[type="file"] {
   /* For IE7, add top margin to align select with labels */
 
   line-height: 30px;
+  width: 300px;
 }
 select {
   width: 220px;

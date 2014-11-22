@@ -8,7 +8,7 @@
 <form action="/accounts/auth/" method="POST">
   {% csrf_token %}
   <fieldset>
-    <legend>{% trans "Logg in" %}</legend>
+    <legend>{% trans "Prijavi se" %}</legend>
     {{ form.non_field_errors }}
     {{ field.errors }}
     {% comment %} Displaying checkboxes differently {% endcomment %}
@@ -21,7 +21,7 @@
     
   </fieldset>
   <input class="btn" type="submit" value="{% trans "Login" %}" />
-  <p>Not yet a member? <a href="/accounts/register">Signup</a></p>
+  <p>Niste još registrirani? <a href="/accounts/register">Registracija</a></p>
 </form>
 
 {% endblock %}

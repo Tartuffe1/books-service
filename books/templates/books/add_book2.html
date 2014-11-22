@@ -1,0 +1,29 @@
+{% extends 'accounts/base_userena.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<form action="/books/add_book/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset class="add_book">
+    <legend>{% trans "Add book" %}</legend>
+    {{ form.non_field_errors }}
+    {{ field.errors }}
+
+    <p class="checkbox">
+    <label for="title">Naslov:</label><input type="text" name="title" id= "title" /><br />
+    </p>
+    <p class="checkbox">
+    <label for="description">Opis:</label> <textarea name="description" id= "description"></textarea><br /> 
+    </p>
+    <p class="checkbox">
+    <label for="docfile">Dodaj sliku:</label><input type="file" name="docfile" /><br /> 
+    </p>
+    
+  </fieldset>
+  <input class="btn" type="submit" value="{% trans "Spremi" %}" />
+</form>
+
+{% endblock %}
