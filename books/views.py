@@ -45,7 +45,7 @@ def add_book(request):
    args.update(csrf(request))
    args['form']= form
    args['context_instance']=RequestContext(request)
-   return render(request, 'books/add_book2.html', args)
+   return render(request, 'books/add_book.html', args)
 #searching books by category
 def category(request, book_category):
   args={}

@@ -4,4 +4,4 @@ from django.template import RequestContext
 def home(request):
     args={}
     args['context_instance']=RequestContext(request)
-    return render(request, 'home2.html', args)
+    return render(request, 'home.html', args)
