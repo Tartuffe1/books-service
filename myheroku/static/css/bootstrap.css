@@ -4689,6 +4689,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
+  font-size: 80%;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -4917,6 +4918,7 @@ a.thumbnail.active {
   padding-left: 0;
   margin-bottom: 20px;
 }
+
 .list-group-item {
   position: relative;
   display: block;
@@ -6356,3 +6358,11 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+.list-group  a{
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.thumbnail span {
+  letter-spacing: 1px;
+}
