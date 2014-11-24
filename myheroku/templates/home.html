@@ -29,7 +29,7 @@
                 {% if book_list.count > 0 %}
        
                    {% for book in book_list %}
-                        <div class="col-sm-3 col-lg-3 col-md-6">
+                        <div class="col-sm-3 col-lg-6 col-md-6">
                             <div class="thumbnail">
                                 <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
                                 <div class="caption">
@@ -40,7 +40,7 @@
                                        <span>{{ book.description }}</span> 
                                     </p>
                                 </div>
-                                <h5 class="pull-right">$74.99</h4>
+                                <h5 class="pull-right">{{ book.price }} kn</h4>
                                 
                             </div>
                         </div>
