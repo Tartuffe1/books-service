@@ -68,11 +68,26 @@ def add_book(request):
    return render(request, 'books/add_book.html', args)
   
 def search(request):
+   args={}
    if request.method == 'POST':
       search_text=request.POST['search_text']
    else:
       search_text=''
       
-   books=Book.objects.filter(Q(title__contains=search_text) | Q(author__contains=search_text))
+   search_list=Book.objects.filter(Q(title__contains=search_text) | Q(description__contains=search_text))
    
-   return render(request,'books/search.html',{'books_found': books})
+   paginator = Paginator(search_list, 4) # Show 4 contacts per page
+
+   # this value is delivered by a href='?page=..., obviously it is GET method   
+   page = request.GET.get('page')
+   try:
+      books = paginator.page(page)
+   except PageNotAnInteger:
+      # If page is not an integer, deliver first page.
+      books = paginator.page(1)
+   except EmptyPage:
+      # If page is out of range (e.g. 9999), deliver last page of results.
+      books = paginator.page(paginator.num_pages)
+        
+   args['search_list']= books
+   return render(request, 'books/search.html', args)

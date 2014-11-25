@@ -23,6 +23,11 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li><a href="#">Search</a></li>
+                    <li>
+                        {% csrf_token %}
+                        <input type="text" id="search" name="search" />
+                    </li>
                 </ul>
                 <!-- User manipulation link-shawn on top right place -->
                 <ul class="nav navbar-nav pull-right">
