@@ -12,13 +12,33 @@ from django.db.models import Q
 
 from django.contrib.auth import get_user
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # all books from database 
 def books(request):
     latest_book_list = Book.objects.all()
     context = {'latest_book_list': latest_book_list}
     return render(request, 'books/books.html', context)      
+def category(request, book_category):
+    args={}
+    args['context_instance']=RequestContext(request)
+    
+    category_list = Book.objects.filter(category__contains=book_category)
+    paginator = Paginator(category_list, 4) # Show 4 contacts per page
 
-# specific book from database
+    # this value is delivered by a href='?page=..., obviously it is GET method   
+    page = request.GET.get('page')
+    try:
+       books = paginator.page(page)
+    except PageNotAnInteger:
+       # If page is not an integer, deliver first page.
+       books = paginator.page(1)
+    except EmptyPage:
+       # If page is out of range (e.g. 9999), deliver last page of results.
+       books = paginator.page(paginator.num_pages)
+        
+    args['book_list']=books
+    return render(request, 'home.html', args)
 def book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     return render(request, 'books/book.html',
@@ -46,15 +66,6 @@ def add_book(request):
    args['form']= form
    args['context_instance']=RequestContext(request)
    return render(request, 'books/add_book.html', args)
-#searching books by category
-def category(request, book_category):
-  args={}
-  args.update(csrf(request))
-  
-  category_list = Book.objects.filter(category__contains=book_category)
-   
-  args['category_list']= category_list
-  return render(request, 'books/category.html', args)
   
 def search(request):
    if request.method == 'POST':

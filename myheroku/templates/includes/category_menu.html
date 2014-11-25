@@ -1,10 +1,11 @@
 <p class="lead">Kategorije</p>
 <div class="list-group">
-    <a href="#" class="list-group-item">Stručna literatura</a>
-    <a href="#" class="list-group-item">Antikvarne knjige</a>
-    <a href="#" class="list-group-item">Književnost i beletristika</a>
-    <a href="#" class="list-group-item">Strana literatura </a>
-    <a href="#" class="list-group-item">Enciklopedije i priručnici </a>
-    <a href="#" class="list-group-item">Periodika </a>
-    <a href="#" class="list-group-item">Stripovi</a>
+    <a href={% url "books:category" 'expert' %} class="list-group-item">Stručna literatura</a>
+    <a href={% url "books:category" 'antiquarian' %} class="list-group-item">Antikvarne knjige</a>
+    <a href={% url "books:category" 'classic' %} class="list-group-item">Književnost i beletristika</a>
+    <a href={% url "books:category" 'foreign' %} class="list-group-item">Strana literatura </a>
+    <a href={% url "books:category" 'encyclopedias_and_handbooks' %} class="list-group-item">Enciklopedije i priručnici </a>
+    <a href={% url "books:category" 'periodicals' %} class="list-group-item">Periodika </a>
+    <a href={% url "books:category" 'comics' %} class="list-group-item">Stripovi</a>
+    <a href={% url "books:category" 'ostala' %} class="list-group-item">Ostala literatura</a>
 </div>
