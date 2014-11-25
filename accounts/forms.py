@@ -1,4 +1,21 @@
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+class UserCreateForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    mobitel=forms.CharField(max_length=20, required=False)
+    class Meta:
+        model = User
+        fields = ("username", "password1", "password2", "email", "mobitel")
+
+    def save(self, commit=True):
+        user = super(UserCreateForm, self).save(commit=False)
+        user.email = self.cleaned_data["email"]
+        user.mobitel = self.cleaned_data["mobitel"]
+        if commit:
+            user.save()
+        return user
 
 attrs_dict = {'class': 'required'}
 

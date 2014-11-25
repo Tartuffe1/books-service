@@ -10,9 +10,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.template import RequestContext
 
 from accounts.forms import ChangeEmailForm
+# Moja intervencija - da korisnik kod registracije moze dodati i svoj email
+from accounts.forms import UserCreateForm
 from django.contrib.auth.forms import PasswordChangeForm
 
 from books.models import Book
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def login(request):
    c={}
@@ -31,25 +35,62 @@ def auth_view(request):
      return HttpResponseRedirect('/accounts/invalid/')
      
 def loggedin(request):
-   return render(request,'home.html',context_instance=RequestContext(request))
+   # Ovaj kod ispod posudjen je iz myheroku.views.home, ponavlja se i ispod u def logout, mogao bih ga ukljuciti
+   # sa necim poput include
+   args={}
+   args['context_instance']=RequestContext(request)
+   latest_book_list = Book.objects.all()
+   paginator = Paginator(latest_book_list, 4) # Show 4 contacts per page
+
+   # this value is delivered by a href='?page=..., obviously it is GET method   
+   page = request.GET.get('page')
+   try:
+      books = paginator.page(page)
+   except PageNotAnInteger:
+      # If page is not an integer, deliver first page.
+      books = paginator.page(1)
+   except EmptyPage:
+      # If page is out of range (e.g. 9999), deliver last page of results.
+      books = paginator.page(paginator.num_pages)
+        
+   args['book_list']=books
+   return render(request, 'home.html', args)
                              
 def invalid_login(request):
    return render(request,'accounts/activate_fail.html',context_instance=RequestContext(request))
    
 def logout(request):
    auth.logout(request)
-   return render(request,'home.html', context_instance=RequestContext(request))
+   
+   args={}
+   args['context_instance']=RequestContext(request)
+   latest_book_list = Book.objects.all()
+   paginator = Paginator(latest_book_list, 4) # Show 4 contacts per page
+
+   # this value is delivered by a href='?page=..., obviously it is GET method   
+   page = request.GET.get('page')
+   try:
+      books = paginator.page(page)
+   except PageNotAnInteger:
+      # If page is not an integer, deliver first page.
+      books = paginator.page(1)
+   except EmptyPage:
+      # If page is out of range (e.g. 9999), deliver last page of results.
+      books = paginator.page(paginator.num_pages)
+        
+   args['book_list']=books
+   return render(request, 'home.html', args)
    
 def register_user(request):
    if request.method == 'POST':
-      form=UserCreationForm(request.POST)
+      form=UserCreateForm(request.POST)
       if form.is_valid():
          form.save()
          return HttpResponseRedirect('/accounts/register_success/')
       
    args={}
    args.update(csrf(request))
-   args['form']=UserCreationForm()
+   args['form']=UserCreateForm()
    args['context_instance']=RequestContext(request)
    return render(request,'accounts/signup_form.html',args)
    
