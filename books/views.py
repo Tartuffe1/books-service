@@ -69,6 +69,8 @@ def add_book(request):
   
 def search(request):
    args={}
+   args.update(csrf(request))
+   
    if request.method == 'POST':
       search_text=request.POST['search_text']
    else:

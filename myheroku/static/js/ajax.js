@@ -1,12 +1,12 @@
 // JavaScript Document
 $(function(){
-       $('#search').keyup(function() {
+       $('#searchbutton').click(function() {
            
            $.ajax({
               type:'POST',
               url:'/books/search/',
               data: {
-                 'search_text': $('#search').val(),
+                 'search_text': $('#searchbar').val(),
                  'csrfmiddlewaretoken' : $('input[name=csrfmiddlewaretoken]').val(),
               },
               success: searchSuccess,

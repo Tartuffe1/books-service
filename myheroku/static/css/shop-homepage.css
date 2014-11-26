@@ -66,3 +66,8 @@ width: 35%;
   letter-spacing: 2px;
   color:#444;
 }
+
+/* polje za pretraživanje */
+.collapse div {
+  margin-top:13px;
+}

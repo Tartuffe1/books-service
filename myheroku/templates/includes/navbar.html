@@ -23,11 +23,13 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
-                    <li><a href="#">Search</a></li>
-                    <li>
+                    <div>
                         {% csrf_token %}
-                        <input type="text" id="search" name="search" />
-                    </li>
+                        <label for="searchbar"><img src="/static/admin/img/icon_searchbox.png" alt="Search" /></label>
+                        <input type="text" size="40" name="q" value="" id="searchbar" />
+                        <input type="submit" value="Traži" id="searchbutton" />
+                    </div>
+                                       
                 </ul>
                 <!-- User manipulation link-shawn on top right place -->
                 <ul class="nav navbar-nav pull-right">
