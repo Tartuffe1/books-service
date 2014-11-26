@@ -1,18 +1,44 @@
+# encoding: utf-8
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 class UserCreateForm(UserCreationForm):
+    CATEGORY_CHOICES = (
+        ('zagrebacka', 'Zagrebačka županija'),
+        ('krapinsko-zagorska', 'Krapinsko-zagorska županija'),
+        ('sisacko-moslavacka', 'Sisačko-moslavačka županija'),
+        ('karlovacka', 'Karlovačka županija'),
+        ('varazdinska', 'Varaždinska županija'),
+        ('koprivnicko-krizevacka', 'Koprivničko-križevačka županija'),
+        ('bjelovarsko-bilogorska', 'Bjelovarsko-bilogorska županija'),
+        ('medjimurska', 'Međimurska županija'),
+        ('grad-zagreb', 'Grad Zagreb'),
+        ('primorsko-goranska', 'Primorsko-goranska županija'),
+        ('licko-senjska', 'Ličko-senjska županija'),
+        ('istarska', 'Istarska županija'),
+        ('viroviticko-podravska', 'Virovitičko-podravska županija'),
+        ('pozesko-slavonska', 'Požeško-slavonska županija'),
+        ('brodsko-posavska', 'Brodsko-posavska županija'),
+        ('osjecko-baranjska', 'Osječko-baranjska županija'),
+        ('vukovarsko-srijemska', 'Vukovarsko-srijemska županija'),
+        ('zadarska', 'Zadarska županija'),
+        ('sibensko-kninska', 'Šibensko-kninska županija'),
+        ('splitsko-dalmatinska', 'Splitsko-dalmatinska županija'),
+        ('dubrovacko-neretvanska', 'Dubrovačko-neretvanska županija'),
+    )
     email = forms.EmailField(required=True)
     mobitel=forms.CharField(max_length=20, required=False)
+    zupanija=forms.ChoiceField(choices = CATEGORY_CHOICES, required=False)
     class Meta:
         model = User
-        fields = ("username", "password1", "password2", "email", "mobitel")
+        fields = ("username", "password1", "password2", "email", "mobitel", "zupanija")
 
     def save(self, commit=True):
         user = super(UserCreateForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
         user.mobitel = self.cleaned_data["mobitel"]
+        user.zupanija = self.cleaned_data["zupanija"]
         if commit:
             user.save()
         return user
