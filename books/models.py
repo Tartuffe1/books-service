@@ -1,6 +1,12 @@
 # encoding: utf-8
 from django.db import models
 from django.contrib.auth.models import User
+# osigurat cemo jedinstveno ime za uploadana slike:
+from time import time
+from datetime import datetime 
+
+def get_file_path(instance, filename):
+    return "images/%s_%s" %(str(time()).replace(".","_"), filename)
 
 class Book(models.Model):
     CATEGORY_CHOICES = (
@@ -16,7 +22,13 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     category = models.CharField(max_length=15, choices = CATEGORY_CHOICES)
     description = models.TextField(max_length=1000)
-    docfile = models.FileField(upload_to='images', default='images/default.jpg')
+    docfile = models.FileField(upload_to=get_file_path,
+                        null=True,
+                        blank=True,
+                        default='images/default.jpg',
+                        )
+    #vrijeme stavljanja oglasa samo ce se upisati:
+    pub_date=models.DateTimeField(default=datetime.now, blank=True)
     
     # Povezujemo knjigu sa korisnikom (userom) koji ju je uploadao:
     user = models.ForeignKey(User)

@@ -32,7 +32,7 @@ class UserCreateForm(UserCreationForm):
     zupanija=forms.ChoiceField(choices = CATEGORY_CHOICES, required=False)
     class Meta:
         model = User
-        fields = ("username", "password1", "password2", "email", "mobitel", "zupanija")
+        fields = ("username", "password1", "password2", "email", "mobitel", "zupanija",)
 
     def save(self, commit=True):
         user = super(UserCreateForm, self).save(commit=False)
