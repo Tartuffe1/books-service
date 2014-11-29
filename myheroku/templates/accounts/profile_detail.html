@@ -33,13 +33,14 @@
               <dd>{{ user.email }}</dd>
             {% endif %}
             
-            {% if user.get_profile.zupanija %}
-              <dt>{% trans "City" %}</dt>
-              <dd>{{ user.zupanija }}</dd>
+            <!-- Za django < 1.7 koristili smo user.get_profile() metodu -->
+            {% if user.userprofile.zupanija %}
+              <dt>Županija</dt>
+              <dd>{{ user.userprofile.zupanija }}</dd>
             {% endif %}
-            {% if user.get_profile.mobitel %}
-              <dt>{% trans "City" %}</dt>
-              <dd>{{ user.mobitel }}</dd>
+            {% if user.userprofile.mobitel %}
+              <dt>Mobitel</dt>
+              <dd>{{ user.userprofile.mobitel }}</dd>
             {% endif %}
           {% endblock %}
         </dl>

@@ -79,7 +79,9 @@ def logout(request):
    return render(request, 'home.html', args)
    
 def register(request):
-
+    # A boolean value for telling the template whether the registration was successful.
+    # Set to False initially. Code changes value to True when registration succeeds.
+    registered = False
 
     # If it's a HTTP POST, we're interested in processing form data.
     if request.method == 'POST':
@@ -113,6 +115,9 @@ def register(request):
 
             # Now we save the UserProfile model instance.
             profile.save()
+            
+            # Update our variable to tell the template registration was successful.
+            registered = True
 
         # Invalid form or forms - mistakes or something else?
         # Print problems to the terminal.
@@ -129,16 +134,18 @@ def register(request):
     # Render the template depending on the context.
     return render(request,
             'accounts/signup_form.html',
-            {'user_form': user_form, 'profile_form': profile_form} )
+            {'user_form': user_form, 'profile_form': profile_form, 'registered': registered} )
 def register_success(request):
    return render_to_response('accounts/signup_complete.html')
 
 def profile_detail(request):
-    return render(request,'accounts/profile_detail.html', context_instance=RequestContext(request))
+    args={}
+    args.update(csrf(request))
+    args['context_instance']=RequestContext(request)
+    return render(request,'accounts/profile_detail.html', args)
     
 def profile_edit(request):
     return 
-
 
 def my_books(request):
     my_books_list = Book.objects.filter(user=request.user)
@@ -148,3 +155,19 @@ def my_books(request):
     args['my_books_list']= my_books_list
     args['context_instance']=RequestContext(request)
     return render(request, 'accounts/my_books.html', args)
+    
+def email_change(request):
+    return
+    
+def password_change(request):
+    if request.method == 'POST':
+      form = PasswordChangeForm(request.POST)
+      if form.is_valid():
+         form.save()
+         return HttpResponseRedirect('/accounts/register_success/')
+      
+    args={}
+    args.update(csrf(request))
+    args['form']=PasswordChangeForm(request)
+    args['context_instance']=RequestContext(request)
+    return render(request,'accounts/password_form.html',args)
