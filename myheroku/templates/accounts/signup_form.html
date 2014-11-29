@@ -4,25 +4,19 @@
 {% block title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<form action="/accounts/register/" method="post">
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Signup" %}</legend>
-    {{ form.non_field_errors }}
-    {% for field in form %}
-    {{ field.errors }}
-    {% comment %} Displaying checkboxes differently {% endcomment %}
-    {% if field.name != 'mobitel' or field.name != 'zupanija'%}
-    <p class="checkbox">
-    <label for="id_{{ field.name }}">{{ field }} {{ field.label }} *</label>
-    </p>
-    {% else %}
-    <p class="checkbox">
-    <label for="id_{{ field.name }}">{{ field }} {{ field.label }} <i>(nije obvezno)</i> </label>
-    </p>
-    {% endif %}
-    {% endfor %}
-  </fieldset>
-  <input class="btn" type="submit" value="{% trans "Signup"%}" />
+
+<form id="user_form" method="post" action="/accounts/register/">
+
+    {% csrf_token %}
+
+    <!-- Display each form. The as_p method wraps each element in a paragraph
+         (<p>) element. This ensures each element appears on a new line,
+         making everything look neater. -->
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+
+    <!-- Provide a button to click to submit the form. -->
+    <input type="submit" name="submit" value="Register" />
 </form>
+
 {% endblock %}

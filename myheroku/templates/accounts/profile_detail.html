@@ -33,11 +33,11 @@
               <dd>{{ user.email }}</dd>
             {% endif %}
             
-            {% if user.zupanija %}
+            {% if user.get_profile.zupanija %}
               <dt>{% trans "City" %}</dt>
               <dd>{{ user.zupanija }}</dd>
             {% endif %}
-            {% if user.mobitel %}
+            {% if user.get_profile.mobitel %}
               <dt>{% trans "City" %}</dt>
               <dd>{{ user.mobitel }}</dd>
             {% endif %}
