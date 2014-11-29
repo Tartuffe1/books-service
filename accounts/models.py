@@ -30,6 +30,7 @@ class UserProfile(models.Model):
     )
     user = models.OneToOneField(User)
 
+    zupanija = models.CharField(max_length=40, choices=CATEGORY_CHOICES, default='zagrebacka')
     mobitel = models.CharField(max_length=20)
     
     def __unicode__(self):

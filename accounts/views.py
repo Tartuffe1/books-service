@@ -106,10 +106,10 @@ def register(request):
 
             # Did the user provide a profile picture?
             # If so, we need to get it from the input form and put it in the UserProfile model.
-            if 'mobitel' in request.FILES:
-                profile.mobitel = request.FILES['mobitel']
-            if 'zupanija' in request.FILES:
-                zupanija.mobitel = request.FILES['zupanija']
+            if 'mobitel' in request.POST:
+                profile.mobitel = request.POST['mobitel']
+            if 'zupanija' in request.POST:
+                profile.zupanija = request.POST['zupanija']
 
             # Now we save the UserProfile model instance.
             profile.save()
