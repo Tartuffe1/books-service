@@ -39,6 +39,17 @@ def category(request, book_category):
         
     args['book_list']=books
     return render(request, 'home.html', args)
+    
+def oglasi_korisnika(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    oglasi_korisnika_lista = Book.objects.filter(user=book.user)
+    
+    args={}
+    args.update(csrf(request))
+    args['oglasi_korisnika_lista']= oglasi_korisnika_lista
+    args['context_instance']=RequestContext(request)
+    return render(request, 'books/oglasi_korisnika.html', args)
+    
 def book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     return render(request, 'books/book.html',

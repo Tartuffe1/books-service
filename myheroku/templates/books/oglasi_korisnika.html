@@ -8,7 +8,6 @@
 <meta property="og:url" content="http://www.eldjango.com" />
 <meta property="og:description" content="Python/Django Starter App. Get your project up and running. Quickly."/>
 <meta property="og:type" content="website" />
-
 {% endblock %}
 
 {% block body_class %}body-home-page{% endblock %}
@@ -19,37 +18,52 @@
 
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-sm-3 col-lg-3 col-md-3">
             {% include 'includes/category_menu.html' %}
         </div>
 
         <div class="col-md-9">
 
             <div class="row">
-               
-               <div class="col-sm-12 col-lg-12 col-md-12">
+  
+                {% if oglasi_korisnika_lista.count > 0 %}
+       
+                   {% for book in oglasi_korisnika_lista %}
+                        <div class="col-sm-12 col-lg-6 col-md-6">
                             <div class="thumbnail">
-                                <img src="{{MEDIA_URL}}{{ book.docfile }}" class="wider_image" alt="">
+                                <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
                                 <div class="caption">
                                     <a href={% url "books:detail" book.id %}>
                                        <h6>{{ book.title }}</h6>
                                     </a>
                                     <p>
-                                       {{ book.description }}
+                                       <span>{{ book.description }}</span> 
                                     </p>
                                 </div>
                                 <h5 class="pull-right">{{ book.price }} kn</h4>
                                 
                             </div>
-                            <h4>Podaci o oglašivaču </h4>
-                            <i>{{ book.user }}</i><br>
-                            <a href={% url "books:oglasi_korisnika" book.id %}>Svi oglasi ovog oglašivača </a>
-                            <br>
-                             Telefon: {{ book.user.userprofile.mobitel }}
-                             <br>
-                            <a href="">Kontaktiraj oglašivača</a>
                         </div>
-            
+                   {% endfor %}
+                   <div class="pagination">
+                        <span class="step-links">
+                            {% if oglasi_korisnika_lista.has_previous %}
+                                <a href="?page={{ oglasi_korisnika_lista.previous_page_number }}">previous</a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                Page {{ oglasi_korisnika_lista.number }} of {{ oglasi_korisnika_lista.paginator.num_pages }}.
+                            </span>
+                    
+                            {% if oglasi_korisnika_lista.has_next %}
+                                <a href="?page={{ oglasi_korisnika_lista.next_page_number }}">next</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% else %}
+                   <p> None for show! </p>
+                {% endif %}               
+                
             </div>
 
         </div>
