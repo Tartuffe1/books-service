@@ -43,7 +43,7 @@
                             </div>
                             <h4>Podaci o oglašivaču </h4>
                             <i>{{ book.user }}</i><br>
-                            <a href={% url "books:oglasi_korisnika" book.id %}>Svi oglasi ovog oglašivača </a>
+                            <a href={% url "books:oglasi_korisnika" book.user %}>Svi oglasi ovog oglašivača </a>
                             <br>
                              Telefon: {{ book.user.userprofile.mobitel }}
                              <br>

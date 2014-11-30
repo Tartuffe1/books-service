@@ -14,6 +14,8 @@ from django.contrib.auth import get_user
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from django.contrib.auth.models import User
+
 # all books from database 
 def books(request):
     latest_book_list = Book.objects.all()
@@ -40,9 +42,10 @@ def category(request, book_category):
     args['book_list']=books
     return render(request, 'home.html', args)
     
-def oglasi_korisnika(request, book_id):
-    book = get_object_or_404(Book, pk=book_id)
-    oglasi_korisnika_lista = Book.objects.filter(user=book.user)
+def oglasi_korisnika(request, book_user):
+
+    korisnik = get_object_or_404(User, username=book_user)
+    oglasi_korisnika_lista = Book.objects.filter(user=korisnik)
     
     args={}
     args.update(csrf(request))
