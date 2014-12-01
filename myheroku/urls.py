@@ -11,7 +11,7 @@ from django.conf.urls.static import static
 urlpatterns = patterns('',
     
     url(r'^$', 'myheroku.views.home', name='home'),
-    url(r'^kontakt/', 'myheroku.views.kontakt', name='kontakt'),
+    url(r'^kontakt/(?P<book_user>\w+)/$','myheroku.views.kontakt', name='kontakt'),
     # url(r'^myheroku/', include('myheroku.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

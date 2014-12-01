@@ -5,6 +5,7 @@ from books.models import Book
 
 from forms import ContactForm
 from django.core.mail import send_mail
+from django.contrib.auth.models import User
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -29,8 +30,13 @@ def home(request):
     args['book_list']=books
     return render(request, 'home.html', args)
     
-def kontakt(request):
+def kontakt(request, book_user):
     if request.method == 'POST':
+        # Do maila cemo doci tako da prvo pozovemo pripadajuci User objekt, a potom
+        # iz njega izvucemo njegovo svojstvo 'mail'
+        user = get_object_or_404(User, username=book_user)
+        mail_prima=user.email
+        
         form = ContactForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
@@ -38,10 +44,12 @@ def kontakt(request):
                 cd['subject'],
                 cd['message'],
                 cd['email'],
-                ['igrice@hi.t-com.hr']
+                [mail_prima]
             )
             return render(request, 'thanks.html', {"name": "thanks"}, )
     else:
         form = ContactForm()
-    return render(request, 'contact_form.html', {'form': form, "name": "contact"}, )
+    # Moramo ukljuciti i name parametar koji ce nam sacuvati osobu kojoj saljemo mail, bilo urednika
+    # bilo nekog oglasivaca.
+    return render(request, 'contact_form.html', {'form': form, "name": book_user}, )
     
