@@ -38,7 +38,7 @@ def kontakt(request):
                 cd['subject'],
                 cd['message'],
                 cd['email'],
-                ['igrice@hi.t-com',]
+                ['igrice@hi.t-com.hr']
             )
             return render(request, 'thanks.html', {"name": "thanks"}, )
     else:

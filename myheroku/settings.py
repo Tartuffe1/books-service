@@ -1,3 +1,7 @@
+MANDRILL_API_KEY = "kAGCAtj6FISZdCpBPyhXAg"
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+DEFAULT_FROM_EMAIL = 'dennis.zellich@gmail.com'
+
 AUTHENTICATION_BACKENDS = (  
         'django.contrib.auth.backends.ModelBackend',  
     )  
@@ -141,6 +145,7 @@ INSTALLED_APPS = (
     'boto',
     'easy_thumbnails',
     'accounts',
+    'djrill', # Mail handling
 )
 
 # A sample logging configuration. The only tangible logging

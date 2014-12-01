@@ -2,7 +2,7 @@
 {% block title %}Template - Contact{% endblock %}
 
 {% block content %}
-<h1>Contact Form</h1>
+<h3>Kontaktiraj administratora:</h3>
 
 {% if form.errors %}
     <p style="color: red;">
@@ -14,17 +14,17 @@
 	    {{ form.non_field_errors }}
 	    <div class="">
 	        {{ form.subject.errors }}
-	        <label for="id_subject">Email subject:</label>
+	        <label for="id_subject"><b>Tema poruke:</b></label>
 	        {{ form.subject }}
 	    </div>
 	    <div class="">
 	        {{ form.message.errors }}
-	        <label for="id_message">Your message:</label>
+	        <label for="id_message"><b>Tekst poruke:</b></label>
 	        {{ form.message }}
 	    </div>
 	    <div class="">
 	        {{ form.email.errors }}
-	        <label for="id_email">Your email address:</label>
+	        <label for="id_email"><b>Vaša email adresa:</b></label>
 	        {{ form.email }}
 	    </div>
 	    <p><input class="btn" type="submit" value="Send message" /></p>
