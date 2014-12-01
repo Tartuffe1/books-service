@@ -51,6 +51,7 @@ def oglasi_korisnika(request, book_user):
     args.update(csrf(request))
     args['oglasi_korisnika_lista']= oglasi_korisnika_lista
     args['context_instance']=RequestContext(request)
+    args['book_user']=korisnik
     return render(request, 'books/oglasi_korisnika.html', args)
     
 def book(request, book_id):

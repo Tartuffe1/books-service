@@ -9,8 +9,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = patterns('',
-    # Examples:
+    
     url(r'^$', 'myheroku.views.home', name='home'),
+    url(r'^kontakt/', 'myheroku.views.kontakt', name='kontakt'),
     # url(r'^myheroku/', include('myheroku.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -21,7 +21,7 @@
                         <a href="/books/add_book">Predaj oglas</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="/kontakt/">Contact</a>
                     </li>
                     <div>
                         {% csrf_token %}
@@ -50,7 +50,8 @@
                             </ul>
                         </li>
                     {% else %}
-                        <li><a href="/accounts/login/">Log in</a></li>	
+                        <li><a href="/accounts/register/">Registracija</a></li>
+                        <li><a href="/accounts/login/">Prijava</a></li>	
                     {% endif %}
                 </ul>
             </div>
