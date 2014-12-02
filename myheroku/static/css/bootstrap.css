@@ -4685,6 +4685,7 @@ a.list-group-item.active > .badge,
   }
 }
 .thumbnail {
+  height: 150px;
   display: block;
   padding: 4px;
   margin-bottom: 20px;

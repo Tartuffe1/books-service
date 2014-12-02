@@ -58,18 +58,12 @@ margin-bottom: 10px;
 padding:5px;
 border:1px solid #ccc; 
 float:left; 
-height: 150px;
+height: 100%;
 width: 35%;
 }
-.thumbnail .wider_image {
-width:25%;
-height:35%;
-float: left;
-margin: 4px 1px 0 1px;
-border: 3px solid #C5BDBD;
-}
+
 .thumbnail .caption {
-    height: 270px;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -84,3 +78,11 @@ border: 3px solid #C5BDBD;
   margin-top:13px;
 }
 
+/* ovo se odnosi na prikaz pojedinacne knjige, povecali smo samo visinu, ostalo ostaje isto */
+.thumbnail.wider {
+  height: 350px;
+}
+
+.clear {
+  clear: left;
+}

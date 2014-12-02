@@ -14,7 +14,7 @@ def home(request):
     args['context_instance']=RequestContext(request)
     
     latest_book_list = Book.objects.all()
-    paginator = Paginator(latest_book_list, 4) # Show 4 contacts per page
+    paginator = Paginator(latest_book_list, 8) # Show 8 contacts per page
 
     # this value is delivered by a href='?page=..., obviously it is GET method   
     page = request.GET.get('page')

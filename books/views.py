@@ -47,9 +47,21 @@ def oglasi_korisnika(request, book_user):
     korisnik = get_object_or_404(User, username=book_user)
     oglasi_korisnika_lista = Book.objects.filter(user=korisnik)
     
+    paginator = Paginator(oglasi_korisnika_lista, 4) # Show 4 contacts per page
+    # this value is delivered by a href='?page=..., obviously it is GET method   
+    page = request.GET.get('page')
+    try:
+       books = paginator.page(page)
+    except PageNotAnInteger:
+       # If page is not an integer, deliver first page.
+       books = paginator.page(1)
+    except EmptyPage:
+       # If page is out of range (e.g. 9999), deliver last page of results.
+       books = paginator.page(paginator.num_pages)
+    
     args={}
     args.update(csrf(request))
-    args['oglasi_korisnika_lista']= oglasi_korisnika_lista
+    args['oglasi_korisnika_lista']= books
     args['context_instance']=RequestContext(request)
     args['book_user']=korisnik
     return render(request, 'books/oglasi_korisnika.html', args)

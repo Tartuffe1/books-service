@@ -28,8 +28,8 @@
             <div class="row">
                
                <div class="col-sm-12 col-lg-12 col-md-12">
-                            <div class="thumbnail">
-                                <img src="{{MEDIA_URL}}{{ book.docfile }}" class="wider_image" alt="">
+                            <div class="thumbnail wider">
+                                <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
                                 <div class="caption">
                                     <a href={% url "books:detail" book.id %}>
                                        <h6>{{ book.title }}</h6>
@@ -38,18 +38,18 @@
                                        {{ book.description }}
                                     </p>
                                 </div>
-                                <h5 class="pull-right">{{ book.price }} kn</h4>
+                                <h5 class="pull-right"><b>Cijena: {{ book.price }} kn</b></h4>
                                 
                             </div>
                             <h4>Podaci o oglašivaču </h4>
                             <i>{{ book.user }}</i>
                             <br>
-                             Županija: {{ book.user.userprofile.zupanija }}
-                            <br>
                             <a href={% url "books:oglasi_korisnika" book.user %}>Svi oglasi ovog oglašivača </a>
                             <br>
                             <hr>
-                             Telefon: {{ book.user.userprofile.mobitel }}
+                             <b>Županija:</b> {{ book.user.userprofile.zupanija }}
+                             <br>
+                             <b>Telefon:</b> {{ book.user.userprofile.mobitel }}
                              <br>
                             <a href={% url "kontakt" book.user %}>Kontaktiraj oglašivača</a>
                         </div>
