@@ -8,8 +8,8 @@ class UserProfile(models.Model):
     
     user = models.OneToOneField(User)
 
-    zupanija = models.CharField(max_length=40)
-    mobitel = models.CharField(max_length=20)
+    zupanija = models.CharField(max_length=40,blank=True)
+    mobitel = models.CharField(max_length=20,blank=True)
     
     def __unicode__(self):
         return self.user.username

@@ -29,7 +29,9 @@ CATEGORY_CHOICES = (
 )
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
-
+    # Zelim da email polje bude obvezno.
+    email=forms.CharField(max_length=75, required=True)
+    
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
