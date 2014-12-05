@@ -25,4 +25,10 @@ $(document).ready(function(){
        $('.container .col-md-9 .row').html(data);
     
     }
+    
+    // Ovo sam dodao da bih mogao ponovno skupiti(sakriti) stavke iz nav_bara, nakon što smanjim prozor 
+    // i rasirim meni.
+    $('.navbar-header button').click(function() {
+       $('#bs-example-navbar-collapse-1').toggle();
+    });
 });

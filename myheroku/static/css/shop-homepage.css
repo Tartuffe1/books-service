@@ -73,8 +73,8 @@ width: 35%;
   color:#444;
 }
 
-/* polje za pretraživanje */
-.collapse div {
+/* polje za pretrazivanje */
+#bs-example-navbar-collapse-1 .search_field {
   margin-top:13px;
 }
 
@@ -85,4 +85,18 @@ width: 35%;
 
 .clear {
   clear: left;
+}
+
+/* ovime postizem da mi slike oglasa prilikom smanjivanja ekrana izgledaju prirodnije,
+   dakle ne zelim da i dalje imaju width 35% vec samo 17% */
+@media screen and (max-width: 1000px){
+    .thumbnail  img { 
+        margin-right:10px; 
+        margin-bottom: 10px;
+        padding:5px;
+        border:1px solid #ccc; 
+        float:left; 
+        height: 100%;
+        width: 17%;
+    }
 }

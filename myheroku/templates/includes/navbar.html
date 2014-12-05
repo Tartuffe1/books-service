@@ -26,12 +26,13 @@
                         <!-- Username postgres mogao bih promijeniti u admin npr, biti ce ljepse za posjetitelje -->
                         <a href={% url "kontakt" "postgres" %}>Kontakt</a>
                     </li>
-                    <div>
+                    <!-- Polje za pretrazivanje! -->
+                    <li class="search_field">
                         {% csrf_token %}
                         <label for="searchbar"><img src="/static/admin/img/icon_searchbox.png" alt="Search" /></label>
                         <input type="text" size="40" name="q" value="" id="searchbar" />
                         <input type="submit" value="Traži" id="searchbutton" />
-                    </div>
+                    </li>
                                        
                 </ul>
                 <!-- User manipulation link-shawn on top right place -->
