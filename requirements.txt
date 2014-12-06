@@ -11,4 +11,4 @@ easy-thumbnails==1.4
 django-userena==1.2.4
 django-guardian==1.1.1
 mandrill>=1.0.6
-djrill==0.4.0
+djrill==1.2.0
