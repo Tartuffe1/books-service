@@ -29,7 +29,7 @@
                     <!-- Polje za pretrazivanje! -->
                     <li class="search_field">
                         {% csrf_token %}
-                        <label for="searchbar"><img src="/static/admin/img/icon_searchbox.png" alt="Search" /></label>
+                        <label for="searchbar"><img src="{{STATIC_URL}}icon_searchbox.png" alt="Search" /></label>
                         <input type="text" size="40" name="q" value="" id="searchbar" />
                         <input type="submit" value="Traži" id="searchbutton" />
                     </li>
