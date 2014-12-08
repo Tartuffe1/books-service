@@ -11,8 +11,9 @@ urlpatterns = patterns('',
     
     # View profiles
     url(r'^profile_detail/$','accounts.views.profile_detail', name='accounts_profile_detail'),
-    url(r'^profile_detail/$','accounts.views.profile_edit', name='accounts_profile_edit'),
+    url(r'^profile_edit/$','accounts.views.profile_edit', name='accounts_profile_edit'),
     url(r'^password_change/$','accounts.views.password_change', name='accounts_password_change'),
+    url(r'^password_change_complete/$','accounts.views.password_change_complete', name='accounts_password_change_complete'),
     url(r'^email_change/$','accounts.views.email_change', name='accounts_email_change'),
     url(r'^my_books/$','accounts.views.my_books', name='accounts_my_books'),
     
