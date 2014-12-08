@@ -8,7 +8,6 @@
     <legend>Vaši podaci su obnovljeni!</legend>
     <div class="list-group">
         <a href="/" class="list-group-item">Povratak na početnu.</a><br />
-        <a href="/accounts/login/" class="list-group-item">Prijavi se sada.</a><br />
     </div>
     {% else %}
         <legend>Izmjena podataka</legend>
@@ -24,7 +23,7 @@
             {{ profile_form.as_p }}
 
             <!-- Provide a button to click to submit the form. -->
-            <input  class="btn" type="submit" name="submit" value="Registriraj se" />
+            <input  class="btn" type="submit" name="submit" value="Uredi" />
         </form>
     {% endif %}
 {% endblock %}
