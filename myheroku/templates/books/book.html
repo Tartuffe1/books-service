@@ -29,7 +29,9 @@
                
                <div class="col-sm-12 col-lg-12 col-md-12">
                             <div class="thumbnail wider">
-                                <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
+                                <a href={% url "books:detail" book.id %}>
+                                   <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
+                                </a>
                                 <div class="caption">
                                     <a href={% url "books:detail" book.id %}>
                                        <h6>{{ book.title }}</h6>

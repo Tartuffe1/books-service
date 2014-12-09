@@ -31,7 +31,9 @@
                    {% for book in book_list %}
                         <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                             <div class="thumbnail">
-                                <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
+                                <a href={% url "books:detail" book.id %}>
+                                   <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
+                                </a>
                                 <div class="caption">
                                     <a href={% url "books:detail" book.id %}>
                                        <h6>{{ book.title }}</h6>

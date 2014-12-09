@@ -12,10 +12,7 @@
       {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
       <ul id="box-nav" class="inline">
           {% block profile_navigation_items %}
-            <li><a href="{% url 'accounts_profile_detail' %}">Moj profil</a></li>
-            <li><a href="{% url 'accounts_profile_edit' %}">Uredi profil</a></li>
-            <li><a href="{% url 'accounts_password_change'%}">Promjena zaporke</a></li>
-            <li><a href="{% url 'accounts_my_books' %}">Moji oglasi</a></li>
+            <li><a href="{% url 'accounts_profile_detail' %}" class="list-group-item"><i class="icon-user"></i> Moj profil</a></li>
           {% endblock %}
       </ul>
     {% endblock %}

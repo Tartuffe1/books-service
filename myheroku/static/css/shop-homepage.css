@@ -52,7 +52,7 @@ footer {
 /*!
  * Moje intervencije
  */
-.thumbnail  img { 
+.thumbnail > a img { 
 margin-right:10px; 
 margin-bottom: 10px;
 padding:5px;
@@ -90,7 +90,7 @@ width: 35%;
 /* ovime postizem da mi slike oglasa prilikom smanjivanja ekrana izgledaju prirodnije,
    dakle ne zelim da i dalje imaju width 35% vec samo 17% */
 @media screen and (max-width: 1000px){
-    .thumbnail  img { 
+    .thumbnail > a  img { 
         margin-right:10px; 
         margin-bottom: 10px;
         padding:5px;
@@ -98,5 +98,15 @@ width: 35%;
         float:left; 
         height: 100%;
         width: 17%;
+    }
+    
+    .thumbnail.wider > a  img { 
+        margin-right:10px; 
+        margin-bottom: 10px;
+        padding:5px;
+        border:1px solid #ccc; 
+        float:left; 
+        height: 100%;
+        width: 35%;
     }
 }
