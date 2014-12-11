@@ -21,11 +21,6 @@ body {
     border-radius: 4px;
 }
 
-.caption {
-    height: 170px;
-    overflow: hidden;
-}
-
 .caption h4 {
     white-space: nowrap;
 }
@@ -34,10 +29,6 @@ body {
     padding-right: 10px;
     padding-left: 10px;
     color: #d17581;
-}
-
-.thumbnail {
-    padding: 5px;
 }
 
 .thumbnail .caption-full {
@@ -63,8 +54,10 @@ width: 35%;
 }
 
 .thumbnail .caption {
-    height: 100%;
-    overflow: hidden;
+position:relative;
+height: 83%;
+overflow: hidden;
+padding-right:3px;
 }
 
 .thumbnail h6 {
@@ -87,7 +80,7 @@ width: 35%;
   clear: left;
 }
 
-/* ovime postizem da mi slike oglasa prilikom smanjivanja ekrana izgledaju prirodnije,
+  /* ovime postizem da mi slike oglasa prilikom smanjivanja ekrana izgledaju prirodnije,
    dakle ne zelim da i dalje imaju width 35% vec samo 17% */
 @media screen and (max-width: 1000px){
     .thumbnail > a  img { 

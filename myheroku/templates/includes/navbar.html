@@ -40,18 +40,20 @@
                     {% if user.is_authenticated %}
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle user-dropdown" data-toggle="dropdown">
-                            <img class="user-thumbnail img-circle" src="{{STATIC_URL}}favicon.ico " alt="" />
-                            Hi, {% if user.first_name %}
+                            <!-- U Bootstrap-u 3.0 koristimo glyphicon, nema vise icon, takodjer sam morao i 
+                                 kopirati Font folder i dopremiti ga u static/ folder --> 
+                            <i class="glyphicon glyphicon-user"></i>
+                            Pozdrav, {% if user.first_name %}
                                 {{ user.first_name }}
                                 {% else %}
                                 {{ user.username }}
                                 {% endif %}
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                              <li><a href="{% url 'accounts_profile_detail' %}"><i class="icon-user"></i> Moj profil</a></li>
-                              <li><a href="{% url 'accounts_my_books' %}"> Moji oglasi</a></li>
+                              <li><a href="{% url 'accounts_profile_detail' %}"><i class="glyphicon glyphicon-user"></i> Moj profil</a></li>
+                              <li><a href="{% url 'accounts_my_books' %}"><i class="glyphicon glyphicon-book"></i> Moji oglasi</a></li>
                               <li class="divider"></li>
-                              <li><a href="/accounts/logout/"><i class="icon-off"></i> Log Out</a></li>
+                              <li><a href="/accounts/logout/"><i class="glyphicon glyphicon-off"></i> Odjava</a></li>
                             </ul>
                         </li>
                     {% else %}

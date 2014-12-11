@@ -44,15 +44,15 @@
                                 
                             </div>
                             <h4>Podaci o oglašivaču </h4>
-                            <i>{{ book.user }}</i>
+                            <a href={% url "books:oglasi_korisnika" book.user %}><b>{{ book.user }}</b></a>
                             <br>
                             <a href={% url "books:oglasi_korisnika" book.user %}>Svi oglasi ovog oglašivača </a>
                             <br>
                             <hr>
-                             <b>Županija:</b> {{ book.user.userprofile.zupanija }}
-                             <br>
-                             <b>Telefon:</b> {{ book.user.userprofile.mobitel }}
-                             <br>
+                            {{ book.user.userprofile.zupanija }}
+                            <br>
+                            <b>Telefon:</b> {{ book.user.userprofile.mobitel }}
+                            <br>
                             <a href={% url "kontakt" book.user %}>Kontaktiraj oglašivača</a>
                         </div>
             
