@@ -1,4 +1,4 @@
-{% extends 'accounts/base_accounts.html' %}
+{% extends "base.html" %}
 {% load i18n %}
 {% load url from future %}
 
@@ -6,25 +6,31 @@
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 
 {% block content %}
-  <div class="white-box">
+  <div class="container">
     
-    {% block profile_navigation %}
-      {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-      <ul id="box-nav" class="inline">
+      {% block profile_navigation %}
+        {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
           {% block profile_navigation_items %}
-            <li><a href="{% url 'accounts_profile_detail' %}" class="list-group-item"><i class="icon-user"></i> Moj profil</a></li>
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="{% url 'accounts_profile_detail' %}" class="list-group-item"><i class="glyphicon glyphicon-user"></i> Moj profil</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts_my_books' %}" class="list-group-item"><i class="glyphicon glyphicon-book"></i> Moji oglasi</a>
+              </li>
+            </ul>
+            <div class="clear"></div>
           {% endblock %}
-      </ul>
-    {% endblock %}
+      {% endblock %}
     
       {% block profile_details %}
         {% if my_books_list.count > 0 %}
             <div class="row">
             {% for book in my_books_list %}
-               <div class="col-sm-12 col-lg-6 col-md-6">
+               <div class="col-sm-6 col-lg-6 col-md-6">
                     <div class="thumbnail">
                         <a href={% url "books:detail" book.id %}>
-                           <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
+                           <img class="moji_oglasi" src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
                         </a>
                         <div class="caption">
                             <a href={% url "books:detail" book.id %}>
@@ -33,9 +39,10 @@
                             <p>
                                {{ book.description }}
                             </p>
-                            <h5 class="pull-right">{{ book.price }} kn</h5>
                         </div>
-                        
+                        <h6 class="pull-left margina-desno"><a href={% url "books:detail" book.id %}>Uredi</a></h6>
+                        <h6 class="pull-left"><a href={% url "books:detail" book.id %}>Pogledaj</a></h6>
+                        <h6 class="pull-right margina-desno">{{ book.price }} kn</h6>
                     </div>
                 </div>
             {% endfor %}

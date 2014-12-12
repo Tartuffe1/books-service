@@ -1,4 +1,4 @@
-{% extends 'accounts/base_accounts.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 {% load url from future %}
 
@@ -10,10 +10,20 @@
     {% block profile_navigation %}
       {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
       <ul id="box-nav" class="inline">
+          
           {% block profile_navigation_items %}
-            <li><a href="{% url 'accounts_profile_edit' %}"><i class="icon-edit"></i> Uredi profil</a></li>
-            <li><a href="{% url 'accounts_password_change'%}"><i class="icon-wrench"></i> Promjena zaporke</a></li>
-            <li><a href="{% url 'accounts_my_books' %}"><i class="icon-book"></i> Moji oglasi</a></li>
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="{% url 'accounts_profile_detail' %}" class="list-group-item"><i class="glyphicon glyphicon-user"></i> Moj profil</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts_profile_detail' %}" class="list-group-item"><i class="glyphicon glyphicon-wrench"></i> Promjena zaporke</a>
+              </li>
+              <li>
+                <a href="{% url 'accounts_my_books' %}" class="list-group-item"><i class="glyphicon glyphicon-book"></i> Moji oglasi</a>
+              </li>
+            </ul>
+            <div class="clear"></div>
           {% endblock %}
       </ul>
     {% endblock %}

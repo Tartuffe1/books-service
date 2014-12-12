@@ -40,17 +40,16 @@
                                        {{ book.description }}
                                     </p>
                                 </div>
-                                <h5 class="pull-right"><b>Cijena: {{ book.price }} kn</b></h4>
+                                <h5 class="pull-right margina-desno"><b>Cijena: {{ book.price }} kn</b></h5>
                                 
                             </div>
                             <h4>Podaci o oglašivaču </h4>
                             <a href={% url "books:oglasi_korisnika" book.user %}><b>{{ book.user }}</b></a>
                             <br>
-                            <a href={% url "books:oglasi_korisnika" book.user %}>Svi oglasi ovog oglašivača </a>
-                            <br>
-                            <hr>
                             {{ book.user.userprofile.zupanija }}
                             <br>
+                            <a href={% url "books:oglasi_korisnika" book.user %}>Svi oglasi ovog oglašivača </a>
+                            <hr>
                             <b>Telefon:</b> {{ book.user.userprofile.mobitel }}
                             <br>
                             <a href={% url "kontakt" book.user %}>Kontaktiraj oglašivača</a>

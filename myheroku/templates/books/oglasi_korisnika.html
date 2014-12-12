@@ -19,7 +19,14 @@
     <div class="row">
 
         <div class="col-sm-3 col-lg-3 col-md-3">
-            {% include 'includes/category_menu.html' %}
+            <h4>Podaci o oglašivaču </h4>
+            <a href={% url "books:oglasi_korisnika" book_user %}><b>{{ book_user }}</b></a>
+            <br>
+            {{ book_user.userprofile.zupanija }}
+            <hr>
+            <b>Telefon:</b> {{ book_user.userprofile.mobitel }}
+            <br>
+            <a href={% url "kontakt" book_user %}>Kontaktiraj oglašivača</a>
         </div>
 
         <div class="col-md-9">

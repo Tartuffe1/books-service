@@ -103,3 +103,13 @@ padding-right:3px;
         width: 35%;
     }
 }
+/* Uveo sam klasu 'moji_oglasi' specijalno za stranicu my_books */
+.thumbnail > a  img.moji_oglasi { 
+    width: 25%;
+}
+    
+.margina-desno {
+  margin-right: 10px;
+}
+
+
