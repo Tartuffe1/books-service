@@ -34,7 +34,7 @@
 <body class="{% block body_class %}{% endblock %}">
 
     {% include 'includes/navbar.html' %}
-
+    {% block profile_navigation %}{% endblock %}
     <div class="body-wrapper">
 		{% block content %}
 			<h1>Whoops</h1>
