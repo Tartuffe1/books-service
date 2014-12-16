@@ -98,8 +98,8 @@ def search(request):
    args={}
    args.update(csrf(request))
    
-   if request.method == 'POST':
-      search_text=request.POST['search_text']
+   if request.method == 'GET':
+      search_text=request.GET['search_text']
    else:
       search_text=''
       
@@ -119,4 +119,4 @@ def search(request):
       books = paginator.page(paginator.num_pages)
         
    args['search_list']= books
-   return render(request, 'books/search.html', args)
+   return render(request, 'books/search_book.html', args)
