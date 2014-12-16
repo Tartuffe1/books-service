@@ -1,0 +1,20 @@
+{% extends 'accounts/base_accounts.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<form action="/books/book_edit/{{book.id}}/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset class="add_book">
+    <legend>Uredi oglas</legend>
+    {{ form.non_field_errors }}
+    {{ field.errors }}
+    {{ form.as_p }}
+            
+  </fieldset>
+  <input class="btn" type="submit" value="{% trans "Spremi" %}" />
+</form>
+
+{% endblock %}

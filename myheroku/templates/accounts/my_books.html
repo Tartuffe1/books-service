@@ -51,8 +51,8 @@
                                {{ book.description }}
                             </p>
                         </div>
-                        <h6 class="pull-left margina-desno"><a href={% url "books:detail" book.id %}>Uredi</a></h6>
-                        <h6 class="pull-left"><a href={% url "books:detail" book.id %}>Pogledaj</a></h6>
+                        <h6 class="pull-left margina-desno"><a href={% url "books:book_edit" book.id %}>Uredi</a></h6>
+                        <h6 class="pull-left"><a href={% url "books:book_delete" book.id %}>Izbriši</a></h6>
                         <h6 class="pull-right margina-desno">{{ book.price }} kn</h6>
                     </div>
                 </div>

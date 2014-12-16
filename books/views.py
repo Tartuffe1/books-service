@@ -81,7 +81,7 @@ def add_book(request):
          # ovaj get_user
          new_book.user = get_user(request)
          new_book.save()
-         return HttpResponseRedirect('/')
+         return HttpResponseRedirect('/accounts/my_books/')
    else:  
       if request.user.is_authenticated():
          form=BookForm() 
@@ -93,7 +93,36 @@ def add_book(request):
    args['form']= form
    args['context_instance']=RequestContext(request)
    return render(request, 'books/add_book.html', args)
-  
+   
+def book_edit(request,book_id):
+   old_book = get_object_or_404(Book, pk=book_id)
+   if request.method == 'POST':
+      form=BookForm(request.POST, request.FILES,instance=old_book)
+      if form.is_valid():
+         new_book = form.save(commit=False)
+         # prirodno sam pokusavao samo sa request.user, ali to cini se nije MyProfile objekt, stoga
+         # ovaj get_user
+         new_book.user = get_user(request)
+         new_book.save()
+         return HttpResponseRedirect('/accounts/my_books/')
+   else:  
+      if request.user.is_authenticated():
+         form=BookForm(instance=old_book) 
+      else:
+         return HttpResponseRedirect('/')
+   
+   args={}
+   args.update(csrf(request))
+   args['form']= form
+   args['book']=old_book
+   args['context_instance']=RequestContext(request)
+   return render(request, 'books/book_edit.html', args)
+
+def book_delete(request,book_id):  
+   book = get_object_or_404(Book, pk=book_id)
+   book.delete()   
+   return HttpResponseRedirect('/accounts/my_books/')
+
 def search(request):
    args={}
    args.update(csrf(request))
