@@ -13,7 +13,7 @@
     {{ field.errors }}
     <p>
     <p class="checkbox">
-    <label for="category">Kategorija:</label>
+    <label for="category">Kategorija: *</label>
        <select name="category" id="category">
           <option value="expert">Stručna literatura</option>
           <option value="classic">Književnost i beletristika</option>
@@ -26,7 +26,7 @@
        </select>
     </p>
     <p class="checkbox">
-    <label for="title">Naslov:</label><input type="text" name="title" id= "title" /><br />
+    <label for="title">Naslov: *</label><input type="text" name="title" id= "title" /><br />
     </p>
     <p class="checkbox">
     <label for="description">Opis:</label> <textarea name="description" id= "description"></textarea><br /> 
@@ -35,7 +35,7 @@
     <label for="docfile">Dodaj sliku:</label><input type="file" name="docfile" /><br /> 
     </p>
     <p class="checkbox">
-    <label for="price">Cijena:</label> <input type="text" name="price" id= "price" /><br /> 
+    <label for="price">Cijena: *</label> <input type="text" name="price" id= "price" /><br /> 
     </p>
   </fieldset>
   <input class="btn" type="submit" value="{% trans "Spremi" %}" />
