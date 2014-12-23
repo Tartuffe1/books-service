@@ -156,7 +156,7 @@ def profile_edit(request):
         # Attempt to grab information from the raw form information.
         # Note that we make use of both UserForm and UserProfileForm.
         user_form = UpdateProfile(data=request.POST, instance=request.user)
-        profile_form = UserProfileForm(data=request.POST, instance=request.user)
+        profile_form = UserProfileForm(data=request.POST, instance=request.user.userprofile)
 
         # If the two forms are valid...
         if user_form.is_valid() and profile_form.is_valid():
