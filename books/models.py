@@ -20,7 +20,7 @@ class Book(models.Model):
         ('ostala', 'Ostala literatura'),
     )
     title = models.CharField(max_length=200)
-    category = models.CharField(max_length=15, choices = CATEGORY_CHOICES)
+    category = models.CharField(max_length=30, choices = CATEGORY_CHOICES)
     description = models.TextField(max_length=1000, blank=True)
     docfile = models.FileField(upload_to=get_file_path,
                         null=True,

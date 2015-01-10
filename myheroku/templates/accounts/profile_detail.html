@@ -41,21 +41,21 @@
         <dl>
           {% block profile_definition_list %}
             {% if user.username %}
-              <dt>{% trans "Name" %}</dt>
+              <dt>Korisničko ime:</dt>
               <dd>{{ user.username }}</dd>
             {% endif %}
             {% if user.email and not hide_email %}
-              <dt>{% trans "Email" %}</dt>
+              <dt>Email:</dt>
               <dd>{{ user.email }}</dd>
             {% endif %}
             
             <!-- Za django < 1.7 koristili smo user.get_profile() metodu -->
             {% if user.userprofile.zupanija %}
-              <dt>Županija</dt>
+              <dt>Županija:</dt>
               <dd>{{ user.userprofile.zupanija }}</dd>
             {% endif %}
             {% if user.userprofile.mobitel %}
-              <dt>Mobitel</dt>
+              <dt>Mobitel:</dt>
               <dd>{{ user.userprofile.mobitel }}</dd>
             {% endif %}
           {% endblock %}

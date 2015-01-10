@@ -132,7 +132,7 @@ def search(request):
    else:
       search_text=''
       
-   search_list=Book.objects.filter(Q(title__contains=search_text) | Q(description__contains=search_text))
+   search_list=Book.objects.filter(Q(title__icontains=search_text) | Q(description__icontains=search_text))
    
    paginator = Paginator(search_list, 4) # Show 4 contacts per page
 

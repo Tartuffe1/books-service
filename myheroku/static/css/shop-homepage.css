@@ -112,4 +112,15 @@ padding-right:3px;
   margin-right: 10px;
 }
 
-
+#details {
+  margin:15px 0 0 55px;
+}
+#details dt {
+  font-weight: bold;
+  letter-spacing: 2px;
+  color:#444;
+}  
+#details dd {
+  margin-bottom:10px;
+  font-style: italic;
+}

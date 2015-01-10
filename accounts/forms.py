@@ -28,7 +28,8 @@ CATEGORY_CHOICES = (
     ('Dubrovačko-neretvanska', 'Dubrovačko-neretvanska županija'),
 )
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(), label="Zaporka")
+    username = forms.CharField(required=True, label="Korisničko ime")
     # Zelim da email polje bude obvezno.
     email=forms.CharField(max_length=75, required=True)
     
@@ -37,14 +38,14 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'password')
 
 class UserProfileForm(forms.ModelForm):
-    zupanija=forms.ChoiceField(widget=forms.Select(), choices = CATEGORY_CHOICES)
+    zupanija=forms.ChoiceField(widget=forms.Select(), choices = CATEGORY_CHOICES, label="Županija")
     
     class Meta:
         model = UserProfile
         fields = ('mobitel', 'zupanija')
 
 class UpdateProfile(forms.ModelForm):
-    username = forms.CharField(required=True)
+    username = forms.CharField(required=True, label="Korisničko ime")
     email = forms.EmailField(required=True)
 
     class Meta:
