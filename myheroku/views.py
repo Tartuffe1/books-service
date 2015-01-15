@@ -13,7 +13,7 @@ def home(request):
     args={}
     args['context_instance']=RequestContext(request)
     
-    latest_book_list = Book.objects.all()
+    latest_book_list = Book.objects.order_by("pub_date").reverse()
     paginator = Paginator(latest_book_list, 8) # Show 8 contacts per page
 
     # this value is delivered by a href='?page=..., obviously it is GET method   
