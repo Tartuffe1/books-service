@@ -16,15 +16,15 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">O nama</a>
-                    </li>
-                    <li>
-                        <!-- Koristim jednorednu verziju if naredbe, tako dobivenu klasu saljem u ajax.js -->
-                        <a class="{{ user.is_authenticated|yesno:"logged,not_logged" }}" href={% url "books:add_book" %}>Predaj oglas</a>
+                        <a href="#">O portalu</a>
                     </li>
                     <li>
                         <!-- Username postgres mogao bih promijeniti u admin npr, biti ce ljepse za posjetitelje -->
                         <a href={% url "kontakt" "postgres" %}>Kontakt</a>
+                    </li>
+                    <li>
+                        <!-- Koristim jednorednu verziju if naredbe, tako dobivenu klasu saljem u ajax.js -->
+                        <a class="{{ user.is_authenticated|yesno:"logged,not_logged" }}" href={% url "books:add_book" %}>Predaj oglas</a>
                     </li>
                     
                                        

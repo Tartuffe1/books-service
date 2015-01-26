@@ -24,8 +24,12 @@
             <br>
             {{ book_user.userprofile.zupanija }}
             <hr>
-            <b>Telefon:</b> {{ book_user.userprofile.mobitel }}
-            <br>
+            {% if user.userprofile.mobitel %}
+              <dt>Telefon: {{ user.userprofile.mobitel }}</dt>
+              <dd></dd>
+              <br>
+            {% endif %}
+            
             <a href={% url "kontakt" book_user %}>Kontaktiraj oglašivača</a>
         </div>
 

@@ -51,8 +51,11 @@
                             <br>
                             <a href={% url "books:oglasi_korisnika" book.user %}>Svi oglasi ovog oglašivača </a>
                             <hr>
-                            <b>Telefon:</b> {{ book.user.userprofile.mobitel }}
-                            <br>
+                            {% if user.userprofile.mobitel %}
+                              <dt>Telefon: <font style="font-weight: normal">{{ user.userprofile.mobitel }}</font></dt>
+                              <dd></dd>
+                              <br>
+                            {% endif %}
                             <a href={% url "kontakt" book.user %}>Kontaktiraj oglašivača</a>
                         </div>
             
