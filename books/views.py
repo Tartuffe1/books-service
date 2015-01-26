@@ -26,7 +26,7 @@ def category(request, book_category):
     args['context_instance']=RequestContext(request)
     
     category_list = Book.objects.filter(category__contains=book_category)
-    paginator = Paginator(category_list, 4) # Show 4 contacts per page
+    paginator = Paginator(category_list, 10) # Show 10 contacts per page
 
     # this value is delivered by a href='?page=..., obviously it is GET method   
     page = request.GET.get('page')
@@ -47,7 +47,7 @@ def oglasi_korisnika(request, book_user):
     korisnik = get_object_or_404(User, username=book_user)
     oglasi_korisnika_lista = Book.objects.filter(user=korisnik)
     
-    paginator = Paginator(oglasi_korisnika_lista, 4) # Show 4 contacts per page
+    paginator = Paginator(oglasi_korisnika_lista, 10) # Show 10 contacts per page
     # this value is delivered by a href='?page=..., obviously it is GET method   
     page = request.GET.get('page')
     try:
@@ -134,7 +134,7 @@ def search(request):
       
    search_list=Book.objects.filter(Q(title__icontains=search_text) | Q(description__icontains=search_text))
    
-   paginator = Paginator(search_list, 4) # Show 4 contacts per page
+   paginator = Paginator(search_list, 10) # Show 10 contacts per page
 
    # this value is delivered by a href='?page=..., obviously it is GET method   
    page = request.GET.get('page')

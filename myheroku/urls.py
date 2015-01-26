@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     
     url(r'^$', 'myheroku.views.home', name='home'),
     url(r'^kontakt/(?P<book_user>\w+)/$','myheroku.views.kontakt', name='kontakt'),
+    url(r'^o_portalu/$','myheroku.views.o_portalu', name='o_portalu'),
     # url(r'^myheroku/', include('myheroku.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
