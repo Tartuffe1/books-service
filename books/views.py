@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from books.models import Book
 from django.template import RequestContext
 
-from forms import BookForm
+from forms import BookForm, BookEditForm
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 
@@ -107,7 +107,7 @@ def book_edit(request,book_id):
          return HttpResponseRedirect('/accounts/my_books/')
    else:  
       if request.user.is_authenticated():
-         form=BookForm(instance=old_book) 
+         form=BookEditForm(instance=old_book) 
       else:
          return HttpResponseRedirect('/')
    
