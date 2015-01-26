@@ -36,7 +36,7 @@
                           <a href="#" class="dropdown-toggle user-dropdown" data-toggle="dropdown">
                             <!-- U Bootstrap-u 3.0 koristimo glyphicon, nema vise icon, takodjer sam morao i 
                                  kopirati Font folder i dopremiti ga u static/ folder --> 
-                            <i class="glyphicon glyphicon-user"></i>
+                            <i class="icon-user"></i>
                             Pozdrav, {% if user.first_name %}
                                 {{ user.first_name }}
                                 {% else %}
@@ -44,10 +44,10 @@
                                 {% endif %}
                             <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                              <li><a href="{% url 'accounts_profile_detail' %}"><i class="glyphicon glyphicon-user"></i> Moj profil</a></li>
-                              <li><a href="{% url 'accounts_my_books' %}"><i class="glyphicon glyphicon-book"></i> Moji oglasi</a></li>
+                              <li><a href="{% url 'accounts_profile_detail' %}"><i class="icon-user"></i> Moj Profil</a></li>
+                              <li><a href="{% url 'accounts_my_books' %}"><i class="icon-book"></i> Moji oglasi</a></li>
                               <li class="divider"></li>
-                              <li><a href="/accounts/logout/"><i class="glyphicon glyphicon-off"></i> Odjava</a></li>
+                              <li><a href="/accounts/logout/"><i class="icon-off"></i> Odjava</a></li>
                             </ul>
                         </li>
                     {% else %}
