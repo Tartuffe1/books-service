@@ -3,14 +3,16 @@
 <html lang="en">
 
 <head>
-    {% block head %}{% endblock %}
+    {% block title %}{% endblock %}
     <meta charset="utf-8">
+    <meta name="robots" content="noarchive,noodp,noydir" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    
+    {% block head %}
+    <meta name="description" content="Online servis za razmjenu, kupnju i prodaju knjiga. Veliki izbor rabljenih (polovnih) knjiga.">
+    {% endblock %}
 
     <!-- Bootstrap Core CSS -->
     <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
@@ -35,10 +37,10 @@
 
     {% include 'includes/navbar.html' %}
     {% block profile_navigation %}{% endblock %}
+    
     <div class="body-wrapper">
 		{% block content %}
-			<h1>Whoops</h1>
-			<p>Sorry, to err is human</p>
+			
 		{% endblock %}
 	</div>
 

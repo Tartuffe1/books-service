@@ -3,8 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1250" />
+    {% block title %}
+    <title>Online servis za razmjenu, kupnju i prodaju knjiga / Biblio-pol</title>
+    {% endblock %}
+    
+    <meta charset="utf-8">
+    <meta name="robots" content="noarchive,noodp,noydir" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    
+    {% block head %}
+    <meta name="description" content="Online servis za razmjenu, kupnju i prodaju knjiga. Veliki izbor rabljenih (polovnih) knjiga.">
+    {% endblock %}
 
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}screen.css"/>
@@ -19,8 +30,7 @@
 	{% include 'includes/navbar_accounts.html' %}
 	<div class="body-wrapper">
 		{% block content %}
-			<h1>Whoops</h1>
-			<p>Sorry, to err is human</p>
+			
 		{% endblock %}
 	</div>
 	{% include 'includes/footer.html' %}

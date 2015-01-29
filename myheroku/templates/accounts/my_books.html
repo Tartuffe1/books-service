@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load url from future %}
 
-{% block title %}{% blocktrans with profile.user.username as username %}{{ username }} | Profile{% endblocktrans %}{% endblock %}
+{% block title %}<title>Moji oglasi / Biblio-pol</title>{% endblock %}
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 {% block profile_navigation %}
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -32,6 +32,7 @@
     </div><!--/.container-fluid -->
 </nav>
 {% endblock %}
+
 {% block content %}
   <div class="container">
       {% block profile_details %}
