@@ -81,7 +81,7 @@ padding-right:3px;
 }
 
   /* ovime postizem da mi slike oglasa prilikom smanjivanja ekrana izgledaju prirodnije,
-   dakle ne zelim da i dalje imaju width 35% vec samo 17% */
+   dakle ne zelim da i dalje imaju width 35% vec samo 22% */
 @media screen and (max-width: 1000px){
     .thumbnail > a  img { 
         margin-right:10px; 
