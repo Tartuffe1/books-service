@@ -82,7 +82,37 @@ padding-right:3px;
 
   /* ovime postizem da mi slike oglasa prilikom smanjivanja ekrana izgledaju prirodnije,
    dakle ne zelim da i dalje imaju width 35% vec samo 22% */
-@media screen and (max-width: 1000px){
+@media(max-width:767px){
+    .thumbnail {
+        height: 100%;
+    }
+    .thumbnail > a  img { 
+        width: 100%;
+        height:100%;
+    }
+    .thumbnail h6 {
+        margin-top:-10px;
+    }
+    
+}
+   
+@media(min-width: 768px){
+    .thumbnail {
+        height: 120px;
+    }
+    .thumbnail > a  img { 
+        width: 35%;
+    }
+}
+@media(min-width: 992px){
+    .thumbnail {
+        height: 150px;
+    }
+    .thumbnail > a  img { 
+        width: 35%;
+    }
+}
+@media(min-width: 1200px){
     .thumbnail > a  img { 
         margin-right:10px; 
         margin-bottom: 10px;
@@ -90,7 +120,7 @@ padding-right:3px;
         border:1px solid #ccc; 
         float:left; 
         height: 100%;
-        width: 22%;
+        width: 35%;
     }
     
     .thumbnail.wider > a  img { 
@@ -108,8 +138,10 @@ padding-right:3px;
     width: 25%;
 }
     
-.margina-desno {
+.margina {
+  margin-left: 10px;
   margin-right: 10px;
+  margin-top: 0px;
 }
 
 #details {
