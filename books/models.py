@@ -5,8 +5,9 @@ from django.contrib.auth.models import User
 from time import time
 from datetime import datetime 
 
+# Zelim dobiti ne predugo, ali dovoljno unikatno ime"
 def get_file_path(instance, filename):
-    return "images/%s_%s" %(str(time()).replace(".","_"), filename)
+    return "images/%s.%s" %(str(time()).replace(".","_"), filename.split('.').pop())
 
 class Book(models.Model):
     CATEGORY_CHOICES = (
