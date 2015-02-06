@@ -38,33 +38,50 @@
       {% block profile_details %}
         {% if my_books_list.count > 0 %}
             <div class="row">
-            {% for book in my_books_list %}
-               <div class="col-xs-12 col-sm-6 col-lg-3 col-md-4">
-                    <div class="thumbnail">
-                        <a href={% url "books:detail" book.id %}>
-                           <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
-                        </a>
-                        <div class="caption">
+                {% for book in my_books_list %}
+                   <div class="col-xs-12 col-sm-6 col-lg-3 col-md-4">
+                        <div class="thumbnail">
                             <a href={% url "books:detail" book.id %}>
-                               <h6>{{ book.title }}</h6>
+                               <img src="{{MEDIA_URL}}{{ book.docfile }}" alt="">
                             </a>
-                            <p>
-                               {{ book.description }}
-                               <br>
-                               <h6>{{ book.price }} kn</h6>
-                            </p>
+                            <div class="caption">
+                                <a href={% url "books:detail" book.id %}>
+                                   <h6>{{ book.title }}</h6>
+                                </a>
+                                <p>
+                                   {{ book.description }}
+                                   <br>
+                                   <h6>{{ book.price }} kn</h6>
+                                </p>
+                            </div>
+                            <h6 class="pull-left margina"><a href={% url "books:book_edit" book.id %}>Uredi</a>&nbsp&nbsp&nbsp</h6>
+                            <h6 class="pull-left margina"><a href={% url "books:book_delete" book.id %}>Izbriši</a></h6>
+                            
                         </div>
-                        <h6 class="pull-left margina"><a href={% url "books:book_edit" book.id %}>Uredi</a>&nbsp&nbsp&nbsp</h6>
-                        <h6 class="pull-left margina"><a href={% url "books:book_delete" book.id %}>Izbriši</a></h6>
-                        
                     </div>
+                {% endfor %}
+                <!-- Ovo je da se pagincija pokazuje ispod oglasa, a ne desno od njih(ako je samo jedan u redu -->
+                <div class="clear"></div>
+               
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if my_books_list.has_previous %}
+                            <a href="?page={{ my_books_list.previous_page_number }}"><b>Prethodna</b> << </a>
+                        {% endif %}
+                
+                        <span class="current">
+                            <b>&nbsp Stranica {{ my_books_list.number }} od {{ my_books_list.paginator.num_pages }}&nbsp</b>
+                        </span>
+                
+                        {% if my_books_list.has_next %}
+                            <a href="?page={{ my_books_list.next_page_number }}"> >> <b>Slijedeća</b></a>
+                        {% endif %}
+                    </span>
                 </div>
-            {% endfor %}
             </div>
-            
-       {% else %}
+        {% else %}
            <p> None for show! </p>
-       {% endif %}
+        {% endif %}
       {% endblock %}
   </div>
 {% endblock %}

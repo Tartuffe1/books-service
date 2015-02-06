@@ -52,15 +52,15 @@
                    <div class="pagination">
                         <span class="step-links">
                             {% if book_list.has_previous %}
-                                <a href="?page={{ book_list.previous_page_number }}">prethodna <--</a>
+                                <a href="?page={{ book_list.previous_page_number }}"><b>Prethodna</b> << </a>
                             {% endif %}
                     
                             <span class="current">
-                                Stranica {{ book_list.number }} od {{ book_list.paginator.num_pages }}
+                                <b>&nbsp Stranica {{ book_list.number }} od {{ book_list.paginator.num_pages }}&nbsp</b>
                             </span>
                     
                             {% if book_list.has_next %}
-                                <a href="?page={{ book_list.next_page_number }}">  slijedeća --></a>
+                                <a href="?page={{ book_list.next_page_number }}"> >> <b>Slijedeća</b></a>
                             {% endif %}
                         </span>
                     </div>

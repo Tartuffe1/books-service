@@ -38,8 +38,8 @@ def loggedin(request):
    # sa necim poput include
    args={}
    args['context_instance']=RequestContext(request)
-   latest_book_list = Book.objects.all()
-   paginator = Paginator(latest_book_list, 4) # Show 4 contacts per page
+   latest_book_list = Book.objects.order_by("pub_date").reverse()
+   paginator = Paginator(latest_book_list, 10) # Show 4 contacts per page
 
    # this value is delivered by a href='?page=..., obviously it is GET method   
    page = request.GET.get('page')
@@ -63,7 +63,7 @@ def logout(request):
    
    args={}
    args['context_instance']=RequestContext(request)
-   latest_book_list = Book.objects.all()
+   latest_book_list = Book.objects.order_by("pub_date").reverse()
    paginator = Paginator(latest_book_list, 10) # Show 10 contacts per page
 
    # this value is delivered by a href='?page=..., obviously it is GET method   
@@ -203,9 +203,21 @@ def profile_edit(request):
 def my_books(request):
     my_books_list = Book.objects.filter(user=request.user)
     
+    paginator = Paginator(my_books_list, 12) # Show 10 contacts per page
+    # this value is delivered by a href='?page=..., obviously it is GET method   
+    page = request.GET.get('page')
+    try:
+       books = paginator.page(page)
+    except PageNotAnInteger:
+       # If page is not an integer, deliver first page.
+       books = paginator.page(1)
+    except EmptyPage:
+       # If page is out of range (e.g. 9999), deliver last page of results.
+       books = paginator.page(paginator.num_pages)
+    
     args={}
     args.update(csrf(request))
-    args['my_books_list']= my_books_list
+    args['my_books_list']= books
     args['context_instance']=RequestContext(request)
     return render(request, 'accounts/my_books.html', args)
     
